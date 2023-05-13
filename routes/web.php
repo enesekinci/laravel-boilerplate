@@ -11,6 +11,8 @@ Route::get(
     => view(view: 'welcome')
 );
 
+Route::get(uri: 'template', action: static fn (): Illuminate\View\View => view(view: 'template'));
+
 Route::get(
     uri: '/dashboard',
     action: static fn (): Illuminate\View\View
