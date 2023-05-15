@@ -8,8 +8,6 @@ var preset_theme = localStorage.getItem('preset_theme') || 'preset-1';
 
 var dark_layout = localStorage.getItem('dark_layout') || 'false';
 
-console.log("dark_layout", dark_layout);
-
 var rtl_layout = localStorage.getItem('rtl_layout') || 'false';
 
 var box_container = localStorage.getItem('box_container') || 'false';

@@ -468,7 +468,6 @@ function layout_rtl_change(value) {
 }
 function layout_change(layout) {
     localStorage.setItem('dark_layout', layout == 'dark' ? 'true' : 'false');
-    console.log("layout", layout);
 
     var control = document.querySelector('.pct-offcanvas');
     document.getElementsByTagName('body')[0].setAttribute('data-pc-theme', layout);

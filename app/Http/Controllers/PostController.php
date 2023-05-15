@@ -11,7 +11,9 @@ class PostController extends Controller
     public function index()
     {
         return view('modules.posts.index', [
-            'posts' => Post::all(),
+            'title' => 'İçerikler',
+            'description' => 'İçeriklerin listelendiği sayfa.',
+            'posts' => Post::paginate(1),
         ]);
     }
 
@@ -37,5 +39,10 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+    }
+
+    public function get()
+    {
+        return Post::all()->toJson();
     }
 }

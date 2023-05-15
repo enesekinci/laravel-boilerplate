@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="/theme/dashboard/assets/css/style.css" id="main-style-link" />
     <link rel="stylesheet" href="/theme/dashboard/assets/css/style-preset.css" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    @yield('css')
 </head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
@@ -57,7 +60,7 @@
             <!-- [ Main Content ] start -->
             <div class="row">
                 <!-- [ sample-page ] start -->
-                {{ $slot }}
+                @yield('content')
                 <!-- [ sample-page ] end -->
             </div>
             <!-- [ Main Content ] end -->
@@ -75,6 +78,8 @@
     <script src="/theme/dashboard/assets/js/plugins/feather.min.js"></script>
 
     <x-dashboard.layout.sidebar-settings />
+
+    @yield('js')
 
 </body>
 <!-- [Body] end -->

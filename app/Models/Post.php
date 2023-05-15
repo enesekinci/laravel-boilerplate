@@ -33,6 +33,16 @@ class Post extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    public function authorName()
+    {
+        return $this->author->name;
+    }
+
+    public function getAuthorNameAttribute()
+    {
+        return $this->authorName();
+    }
+
     public function scopePublished($query)
     {
         return $query->where('is_published', true);

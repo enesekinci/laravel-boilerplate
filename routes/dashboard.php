@@ -15,5 +15,6 @@ Route::group(attributes: [
 
     Route::resource('settings', SettingController::class);
 
+    Route::get('posts/get', [PostController::class, 'get'])->name('posts.get');
     Route::resource('posts', PostController::class);
 });
