@@ -44,15 +44,15 @@
              </div>
 
              <ul class="pc-navbar">
-                 <x-dashboard.menu-link :url="route('dashboard')" title="Panel" icon="airplay" />
+                 <x-dashboard.layout.menu-link :url="route('dashboard')" title="Panel" icon="airplay" />
 
-                 <x-dashboard.menu-link :url="route('posts.index')" title="Post" icon="file" />
+                 <x-dashboard.layout.menu-link :url="route('posts.index')" title="Post" icon="file" />
 
-                 <x-dashboard.menu-dropdown-link title="Ayarlar" icon="settings">
+                 <x-dashboard.layout.menu-dropdown-link title="Ayarlar" icon="settings">
 
-                     <x-dashboard.menu-dropdown-item :url="route('settings.index')" title="Genel Ayarlar" />
+                     <x-dashboard.layout.menu-dropdown-item :url="route('settings.index')" title="Genel Ayarlar" />
 
-                 </x-dashboard.menu-dropdown-link>
+                 </x-dashboard.layout.menu-dropdown-link>
 
              </ul>
          </div>

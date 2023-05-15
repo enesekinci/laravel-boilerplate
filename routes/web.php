@@ -11,14 +11,6 @@ Route::get(
     => view(view: 'welcome')
 );
 
-Route::get(uri: 'template', action: static fn (): Illuminate\View\View => view(view: 'template'));
-
-Route::get(
-    uri: '/dashboard',
-    action: static fn (): Illuminate\View\View
-    => view(view: 'dashboard')
-)->middleware(middleware: ['auth', 'verified'])->name(name: 'dashboard');
-
 Route::middleware(['auth'])->group(static function (): void {
     Route::get(uri: '/profile', action: [ProfileController::class, 'edit'])->name(name: 'profile.edit');
     Route::patch(uri: '/profile', action: [ProfileController::class, 'update'])->name(name: 'profile.update');

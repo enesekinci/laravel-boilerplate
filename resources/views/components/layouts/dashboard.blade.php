@@ -39,7 +39,7 @@
 
 <body>
     <!-- [ Pre-loader ] start -->
-    <x-dashboard.pre-loader />
+    <x-dashboard.layout.pre-loader />
     <!-- [ Pre-loader ] End -->
 
     <!-- [ Sidebar Menu ] start -->

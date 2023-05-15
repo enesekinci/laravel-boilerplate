@@ -96,3 +96,17 @@ if (!function_exists('canAction')) {
         return true;
     }
 }
+
+if (!function_exists('getModelTableColumns')) {
+    function getModelTableColumns(Illuminate\Database\Eloquent\Collection|Illuminate\Pagination\AbstractPaginator $data): array
+    {
+        if ($data instanceof Illuminate\Pagination\AbstractPaginator) {
+            $posts = $data->getCollection();
+        }
+
+        $model = $data->first()->getMorphClass();
+
+
+        return isset($model::$tableColumns) ? $model::$tableColumns : $tableColumns = (new $model)->getFillable();
+    }
+}

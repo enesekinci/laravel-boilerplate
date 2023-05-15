@@ -10,15 +10,25 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('modules.posts.index', [
+        $posts = Post::paginate(5);
+
+        $tableColumns = \getModelTableColumns($posts);
+
+        return view('dashboard.modules.posts.index', [
             'title' => 'İçerikler',
             'description' => 'İçeriklerin listelendiği sayfa.',
-            'posts' => Post::paginate(1),
+            'posts' => $posts,
+            'tableColumns' => $tableColumns,
         ]);
     }
 
     public function create()
     {
+        return view('dashboard.modules.posts.create', [
+            'title' => 'İçerik Oluştur',
+            'description' => 'İçerik oluşturulduğu sayfa.',
+            'posts' => Post::all(),
+        ]);
     }
 
     public function store(StorePostRequest $request)

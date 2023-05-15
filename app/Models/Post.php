@@ -26,6 +26,49 @@ class Post extends Model
         'published_at' => 'datetime',
     ];
 
+    public static $tableColumns = [
+        'title',
+        'authorName',
+        'content',
+        'image',
+        'is_published',
+        'published_at',
+    ];
+
+    public static $formFields = [
+        'title' => [
+            'type' => 'text',
+            'label' => 'Başlık',
+            'placeholder' => 'Başlık',
+            'required' => true,
+        ],
+        'content' => [
+            'type' => 'textarea',
+            'label' => 'İçerik',
+            'placeholder' => 'İçerik',
+            'editor' => true,
+            'required' => true,
+        ],
+        'image' => [
+            'type' => 'file',
+            'label' => 'Resim',
+            'placeholder' => 'Resim',
+            'required' => true,
+        ],
+        'is_published' => [
+            'type' => 'checkbox',
+            'label' => 'Yayınla',
+            'placeholder' => 'Yayınla',
+            'required' => false,
+        ],
+        'published_at' => [
+            'type' => 'datetime',
+            'label' => 'Yayın Tarihi',
+            'placeholder' => 'Yayın Tarihi',
+            'required' => false,
+        ],
+    ];
+
 
 
     public function author()

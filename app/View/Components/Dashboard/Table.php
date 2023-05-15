@@ -11,7 +11,7 @@ use Illuminate\View\Component;
 class Table extends Component
 {
     public function __construct(
-        public array $headers,
+        // public array|null $headers = [],
         public array $columns,
         public array|Collection|Arrayable $data,
         public bool $pagination = false,
@@ -21,7 +21,7 @@ class Table extends Component
     public function render(): View|Closure|string
     {
         return view('components.dashboard.table', [
-            'headers' => $this->headers,
+            // 'headers' => $this->headers,
             'columns' => $this->columns,
             'data' => $this->data,
             'pagination' => $this->pagination,
