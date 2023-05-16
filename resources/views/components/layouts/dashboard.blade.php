@@ -15,6 +15,16 @@
 
     <!-- [Favicon] icon -->
     <link rel="icon" href="/theme/dashboard/assets/images/favicon.svg" type="image/x-icon">
+
+    <!-- rangeslider css -->
+    <link rel="stylesheet" href="/theme/dashboard/assets/css/plugins/bootstrap-slider.min.css">
+
+    <!-- [Page specific CSS] start -->
+    <link rel="stylesheet" href="/theme/dashboard/assets/css/plugins/flatpickr.min.css">
+
+    <!-- notification css -->
+    <link rel="stylesheet" href="/theme/dashboard/assets/css/plugins/notifier.css">
+
     <!-- [Font] Family -->
     <link rel="stylesheet" href="/theme/dashboard/assets/fonts/inter/inter.css" id="main-font-link" />
 
@@ -30,8 +40,14 @@
     <link rel="stylesheet" href="/theme/dashboard/assets/css/style.css" id="main-style-link" />
     <link rel="stylesheet" href="/theme/dashboard/assets/css/style-preset.css" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="/theme/dashboard/assets/css/plugins/datepicker-bs5.min.css">
 
+    <script src="/theme/dashboard/assets/js/plugins/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/theme/dashboard/assets/js/plugins/axios/dist/axios.min.js"></script>
+    <script src="/theme/dashboard/assets/js/plugins/choices.min.js"></script>
+    <script src="/theme/dashboard/assets/js/plugins/datepicker-full.min.js"></script>
+    <!-- Time picker -->
+    <script src="/theme/dashboard/assets/js/plugins/flatpickr.min.js"></script>
     @yield('css')
 </head>
 <!-- [Head] end -->
@@ -79,6 +95,113 @@
 
     <x-dashboard.layout.sidebar-settings />
 
+    <!-- notification Js -->
+    <script src="/theme/dashboard/assets/js/plugins/notifier.js"></script>
+
+    <script>
+        function success_alert(text = "", timeout = 3000) {
+            return notifier.show('İşlem başarılı!', text, 'success', '/theme/dashboard/assets/images/notification/ok-48.png', timeout);
+        }
+
+        function error_alert(text = "", timeout = 3000) {
+            notifier.show('İşlem başarısız!', text, 'warning', '/theme/dashboard/assets/images/notification/high_priority-48.png', timeout);
+        }
+    </script>
+
+    <script src="/theme/dashboard/assets/js/plugins/ckeditor/4.21.0/full/ckeditor.js"></script>
+
+    <!-- Input mask Js -->
+    <script src="/theme/dashboard/assets/js/plugins/imask.min.js"></script>
+    <!-- form-picker-custom Js -->
+    <script src="/theme/dashboard/assets/js/pages/form-masking-custom.js"></script>
+    <!-- range slider Js -->
+    <script src="/theme/dashboard/assets/js/plugins/bootstrap-slider.min.js"></script>
+    <script>
+        function ckEditorInit() {
+            CKEDITOR.replaceAll(function(textarea, config) {
+                if (textarea.className.search("ckeditor-content") != -1) {
+
+                    // add custom templates to the editor
+                    config.templates_files = ['/js/ckeditor-templates.js'];
+
+                    config.extraPlugins = 'templates';
+                    config.filebrowserImageBrowseUrl = '/dashboard/laravel-filemanager?type=Images';
+                    config.filebrowserImageUploadUrl = '/dashboard/laravel-filemanager/upload?type=Images&_token=';
+                    config.filebrowserBrowseUrl = '/dashboard/laravel-filemanager?type=Files';
+                    config.filebrowserUploadUrl = '/dashboard/laravel-filemanager/upload?type=Files&_token=';
+                    return true;
+                } else if (textarea.className.search("ckeditor-summary") != -1) {
+                    config.toolbarGroups = [{
+                            name: 'document',
+                            groups: ['mode', 'document', 'doctools']
+                        },
+                        {
+                            name: 'clipboard',
+                            groups: ['undo', 'clipboard']
+                        },
+                        {
+                            name: 'editing',
+                            groups: ['find', 'selection', 'spellchecker', 'editing']
+                        },
+                        {
+                            name: 'forms',
+                            groups: ['forms']
+                        },
+                        '/',
+                        {
+                            name: 'basicstyles',
+                            groups: ['basicstyles', 'cleanup']
+                        },
+                        {
+                            name: 'paragraph',
+                            groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph']
+                        },
+                        {
+                            name: 'links',
+                            groups: ['links']
+                        },
+                        {
+                            name: 'insert',
+                            groups: ['insert']
+                        },
+                        {
+                            name: 'colors',
+                            groups: ['colors']
+                        },
+                        {
+                            name: 'styles',
+                            groups: ['styles']
+                        },
+                        {
+                            name: 'tools',
+                            groups: ['tools']
+                        },
+                        {
+                            name: 'others',
+                            groups: ['others']
+                        },
+                        {
+                            name: 'about',
+                            groups: ['about']
+                        }
+                    ];
+                    config.removeButtons =
+                        'Source,Save,NewPage,ExportPdf,Preview,Print,Templates,Undo,Redo,Cut,Copy,Paste,PasteText,PasteFromWord,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Superscript,Subscript,Strike,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Indent,Outdent,CreateDiv,BidiLtr,BidiRtl,Language,Anchor,Image,Flash,Table,HorizontalRule,Smiley,PageBreak,SpecialChar,Iframe,Styles,Format,Font,FontSize,Maximize,ShowBlocks,About';
+
+                    return true;
+                }
+                return false;
+            });
+        }
+
+        function ckEditorUpdate() {
+            for (let editorName in CKEDITOR.instances) {
+                CKEDITOR.instances[editorName].updateElement();
+            }
+        }
+
+        ckEditorInit();
+    </script>
     @yield('js')
 
 </body>

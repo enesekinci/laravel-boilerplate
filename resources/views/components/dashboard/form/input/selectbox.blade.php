@@ -1,9 +1,15 @@
+@php
+    
+@endphp
 <div class="{{ $col ?? 'col-md-6' }} {{ $rowClass ?? null }}">
     <x-dashboard.form.input.group>
-        <x-dashboard.form.input.label for="{{ $id }}" title="{{ $title }}" />
+        <x-dashboard.form.input.label for="{{ $id ?? $name }}" title="{{ $title }}" />
         <select class="form-control {{ $css ?? null }}" id="{{ $id ?? $name }}" name="{{ $id ?? $name }}" {{ isset($select2) ? 'data-trigger' : null }} {{ $attributes }}>
+            @if ($attributes->has('debug'))
+                {{ dd($options) }}
+            @endif
             @foreach ($options as $item)
-                <option value="{{ $item->id }}">{{ $item->{$option} }}</option>
+                <option value="{{ $item->{$value} }}">{{ $item->{$option} }}</option>
             @endforeach
         </select>
         </x-input-group>

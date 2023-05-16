@@ -31,7 +31,7 @@
 @endphp
 <div class="{{ $col ?? 'col-md-6' }} {{ $rowClass ?? null }}">
     <x-dashboard.form.input.group>
-        <x-dashboard.form.input.label for="{{ $id }}" title="{{ $title }}" />
-        <x-dashboard.form.input.input type="file" id="{{ $id ?? $name }}" placeholder="{{ $title }}" name="{{ $name ?? $id }}" acccept="{{ $accept }}" {{ $attributes }} />
+        <x-dashboard.form.input.label for="{{ $id ?? $name }}" title="{{ $title }}" />
+        <x-dashboard.form.input.input type="file" id="{{ $id ?? $name }}" :name="$name ?? $id" :placeholder="$placeholder ?? $title" acccept="{{ $accept }}" {{ $attributes }} />
         </x-input-group>
 </div>

@@ -2,7 +2,7 @@
 @section('content')
     <x-page-content-box>
         <div class="d-flex justify-content-end">
-            <a href="{{ route('posts.index') }}" class="btn btn-outline-success btn-shadow">Listeye Dön</a>
+            <a href="{{ route('posts.index') }}" class="btn btn-outline-warning btn-shadow">Listeye Dön</a>
         </div>
     </x-page-content-box>
     <x-page-content-box :title="$title" :description="$description">
@@ -25,14 +25,16 @@
 
                 <x-dashboard.form.input.file type="image" id="image" title="Resim" type="image" />
 
+                <x-dashboard.form.input.ckeditor id="content" title="İçerik" />
+
             </div>
             <div class="row justify-content-center align-items-center g-2">
                 <hr>
             </div>
             <div class="row">
                 <div class="col-6">
-                    <x-dashboard.form.action-button color="success" type="submit" title="Kaydet" />
-                    <x-dashboard.button.action-link color="danger" :url="route('posts.index')" title="Listeye Dön" />
+                    <x-dashboard.form.action-button color="outline-success" type="submit" title="Kaydet" />
+                    <x-dashboard.button.action-link color="outline-danger" :url="route('posts.index')" title="Listeye Dön" />
                 </div>
             </div>
         </x-dashboard.form.form>
@@ -40,4 +42,5 @@
 @endsection
 @section('js')
     <script src="/theme/dashboard/assets/js/plugins/choices.min.js"></script>
+    <script></script>
 @endsection

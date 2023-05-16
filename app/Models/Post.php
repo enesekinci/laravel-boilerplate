@@ -43,7 +43,7 @@ class Post extends Model
             'required' => true,
         ],
         'content' => [
-            'type' => 'textarea',
+            'type' => 'ckeditor',
             'label' => 'İçerik',
             'placeholder' => 'İçerik',
             'editor' => true,
@@ -56,7 +56,7 @@ class Post extends Model
             'required' => true,
         ],
         'is_published' => [
-            'type' => 'checkbox',
+            'type' => 'status',
             'label' => 'Yayınla',
             'placeholder' => 'Yayınla',
             'required' => false,
